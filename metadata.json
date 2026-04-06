@@ -1,0 +1,5 @@
+{
+  "name": "Swasthya 360",
+  "description": "Comprehensive Ayurvedic health companion with AI herb scanning, Dosha analysis, and symptom-based remedies.",
+  "requestFramePermissions": ["camera", "microphone"]
+}

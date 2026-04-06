@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user health data, dosha, and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "dosha": { "type": "string", "enum": ["Vata", "Pitta", "Kapha", "Unknown"] },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "weight": { "type": "number" },
+        "height": { "type": "number" },
+        "activityLevel": { "type": "string" },
+        "favorites": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "CalorieLog": {
+      "title": "Calorie Log",
+      "description": "Daily food intake logs.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "foodName": { "type": "string" },
+        "calories": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "date", "calories"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile data."
+    },
+    "/users/{userId}/calorieLogs/{logId}": {
+      "schema": "CalorieLog",
+      "description": "User's daily calorie logs."
+    }
+  }
+}
